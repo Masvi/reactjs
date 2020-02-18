@@ -4,25 +4,41 @@ class TechList extends Component {
 	/*
 		usado para guardar/manipular o estado do componente
 	*/
-	state = {
-		techs: [
-			'NodeJS',
-			'ReactJS',
-			'React Native'
-		]
-	};
+    state = {
+        newTech: '',
+        techs: [
+            'NodeJS',
+            'ReactJS',
+            'React Native'
+        ],
+    };
+    handleInputChange = e => {
+        this.setState({ newTech: e.target.value })
 
-	render() {
+    }
+    handleSubmit = e => {
+        e.preventDefault();
+        this.setState({
+            techs: [...this.state.techs, this.state.newTech],
+            newTech: ''
+        });
+    }
 
-		console.log(this.state)
-		return (
-			<ul>
-				<li>NodeJS</li>
-				<li>ReactJS</li>
-				<li>React Native</li>
-			</ul>
-		);
-	}
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <ul>
+                    {this.state.techs.map(tech => <li key={tech}>{tech}</li>)}
+                </ul>
+                <input
+                    type="text"
+                    onChange={this.handleInputChange}
+                    value={this.state.newTech}
+                />
+                <button type="submit">save</button>
+            </form>
+        );
+    }
 }
 
 export default TechList;
