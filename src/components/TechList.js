@@ -13,6 +13,19 @@ class TechList extends Component {
             'React Native'
         ],
     };
+    //executado assim que o componente aparece em tela
+    componentDidMount(prevProps, prevState) {
+
+    }
+    //executado sempre que houver alteraçãoes nas props ou estado
+    componentDidUpdate() {
+
+    }
+    //executa quando o componente deixa de existir
+    componentWillUnmount() {
+
+    }
+
     handleInputChange = e => {
         this.setState({ newTech: e.target.value })
 
